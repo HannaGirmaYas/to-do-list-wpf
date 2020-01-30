@@ -7,7 +7,40 @@
         mc:Ignorable="d"
         Title="MainPage" Height="620" Width="500"
         WindowStyle="None" AllowsTransparency="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="35"/>
+    </WindowChrome.WindowChrome>
+
     <Grid>
-        
+        <Grid VerticalAlignment="Top" Background="Beige">
+            <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Height="35" Margin="0,0,1.5,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left"  Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,396,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="iconfinder_plus_alt_118618.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,5,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="iconfinder_settings_115801.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,3,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="iconfinder_ic_close_48px_352270.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="10,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="445" FontWeight="Medium" FontSize="16"/>
+        <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="460,54,0,536" RenderTransformOrigin="1.6,2.067">
+            <Button.Background>
+                <ImageBrush ImageSource="iconfinder_icon-111-search_314478.png"/>
+            </Button.Background>
+        </Button>
+        <DataGrid HorizontalAlignment="Left" Height="100" Margin="24,105,0,0" VerticalAlignment="Top" Width="447.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="32" Margin="37,121,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Width="418" FontSize="18" FontWeight="Medium"/>
+        <TextBlock HorizontalAlignment="Left" Height="18.5" Margin="37,171.5,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Width="134.5" FontStyle="Italic"/>
+        <Border BorderBrush="#FFA89E9E" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="24,105,0,0" VerticalAlignment="Top" Width="447.5"/>
+
     </Grid>
 </Window>

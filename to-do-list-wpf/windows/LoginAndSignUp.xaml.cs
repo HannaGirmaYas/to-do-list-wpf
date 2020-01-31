@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Morning_Bell;
 using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
@@ -61,13 +60,16 @@ namespace to_do_list_wpf.windows
                         }
                     }
                 }
-                Morning_Bell.Task task = new Morning_Bell.Task();
+                to_doTask t = new to_doTask("", "");
+                if (t == null) { MessageBox.Show("null"); }
+                MessageBox.Show("here");
+                TaskJ tasks = new TaskJ(t);
                 int count = 0;
                 int hashPassword = passwordR.Text.GetHashCode();
                 bool loggedIn = false;
-                User newUser = new User(usernameR.Text,hashPassword,count,email.Text,task,loggedIn);
-                Task<User> x = fb.AddUser(newUser);
-                User user = x.Result;
+                User newUser = new User(usernameR.Text,hashPassword,count,email.Text,tasks,loggedIn);
+                User user = fb.AddUser(newUser);
+                
 
 
                 if (user.Username==newUser.Username)

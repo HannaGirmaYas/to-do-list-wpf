@@ -1,15 +1,16 @@
-﻿<Page x:Class="Morning_Bell.TaskView"
+﻿<Page x:Class="to_do_list_wpf.TaskView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Morning_Bell"
+      xmlns:local="clr-namespace:to_do_list_wpf"
       mc:Ignorable="d" 
       d:DesignHeight="270.641" d:DesignWidth="325.979"
       Title="TaskView" 
 	  Background="{StaticResource mainBackground}"
 	  Foreground="{StaticResource mainForeground}">
 	<Page.Resources>
+
 		<Style TargetType="TextBox" >
 			<Setter Property="Background" Value="Transparent" />
 			<Setter Property="Foreground" Value="{StaticResource mainForeground}" />
@@ -18,6 +19,7 @@
 		<Style TargetType="TextBlock" >
 			<Setter Property="FontSize" Value="14" />
 		</Style>
+
 		<Style x:Key="TitleStyle" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
 			<Style.Triggers>
 				<Trigger Property="IsFocused" Value="True" >
@@ -26,6 +28,7 @@
 			</Style.Triggers>
 			<Setter Property="FontSize" Value="19" />
 		</Style>
+
 		<Style x:Key="DescStyle"  BasedOn="{StaticResource {x:Type TextBox}}"  TargetType="TextBox">
 			<Style.Triggers>
 				<Trigger Property="IsFocused" Value="True" >
@@ -33,6 +36,7 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
+
 		<Style x:Key="ItemStyle"  BasedOn="{StaticResource {x:Type TextBox}}"  TargetType="TextBox">
 			<Setter Property="BorderThickness" Value="0" />
 			<Setter Property="SelectionBrush" Value="{StaticResource mainAccent}" />
@@ -42,6 +46,7 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
+
 		<DataTemplate x:Key="taskItems" DataType="local:Task.ChecklistItem">
 			<Grid>
 				<Grid.ColumnDefinitions>
@@ -51,21 +56,36 @@
 				</Grid.ColumnDefinitions>
 				<CheckBox Grid.Column="0" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" VerticalAlignment="Center"  BorderThickness="2"
 							  Background="{StaticResource mainAccent}"/>
-				<TextBox Grid.Column="1" Text="{Binding Path=Text, Mode=TwoWay}" Style="{StaticResource ItemStyle}" 
-									  VerticalAlignment="Center" Margin="5"  />
-				<Button Grid.Column="2" Content="X" Background="Transparent" Foreground="{StaticResource secondAccent}"/>
-				</Grid>
+				<TextBox Grid.Column="1" Text="{Binding Path=Text, Mode=TwoWay}" 
+									  VerticalAlignment="Center" Margin="5"  >
+				</TextBox>
+				<Button Grid.Column="2" Content="X" Background="Transparent" Foreground="{StaticResource secondAccent}" Click="RemoveItem" />
+			</Grid>
 		</DataTemplate>
 	</Page.Resources>
-	<StackPanel Background="Transparent"  Margin="5">
-		<TextBox Text="{Binding Path=Title, Mode=TwoWay}" Style="{StaticResource TitleStyle}" />
-		<TextBox Text="{Binding Path=Description, Mode=TwoWay}" Style="{StaticResource DescStyle}" />
-		<StackPanel>
-			<ListBox x:Name="itemListBox" ItemsSource="{Binding Path=Items}" ItemTemplate="{StaticResource taskItems}"
-					 Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch"/>
+	<Grid Background="Transparent"  Margin="5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+		<TextBox Grid.Row="0" Text="{Binding Path=Title, Mode=TwoWay}" Style="{StaticResource TitleStyle}" />
+		<TextBox Grid.Row="1" Text="{Binding Path=Description, Mode=TwoWay}" Style="{StaticResource DescStyle}" />
+		<StackPanel Grid.Row="2">
+			<ListView Focusable="False" x:Name="itemList" ItemsSource="{Binding Path=Items}" ItemTemplate="{StaticResource taskItems}"
+					 Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch" 
+					  SelectionMode="Single"/>
+			<!--<ListBox x:Name="itemList" ItemsSource="{Binding Path=Items}" ItemTemplate="{StaticResource taskItems}"
+					 Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch"/>-->
 			<!--ItemTemplate="{StaticResource TaskItems}"-->
 			<Button Content="+ Item" Foreground="{StaticResource mainAccent}"
 						Background="Transparent" BorderBrush="Transparent" Margin="5" Click="AddItem" />
 		</StackPanel>
-	</StackPanel>
+		<Separator Background="Transparent" Grid.Row="3"/>
+		<StackPanel Grid.Row="4">
+			<TextBlock Text="{Binding Path=CreatedAt}" />
+		</StackPanel>
+	</Grid>
 </Page>

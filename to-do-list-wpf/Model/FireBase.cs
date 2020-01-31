@@ -50,7 +50,7 @@ namespace to_do_list_wpf.Model
             }
                 return users;
             }
-            public async Task<User> AddUser(User u)
+        public User AddUser(User u)
             {
                 FirebaseResponse response =  client.Get("ToDoList/Users/Count/node");
                 Count count = (response.ResultAs<Count>());

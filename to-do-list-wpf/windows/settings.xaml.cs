@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using to_do_list_wpf.Model;
 
 namespace to_do_list_wpf.windows
 {
@@ -19,9 +20,18 @@ namespace to_do_list_wpf.windows
     /// </summary>
     public partial class settings : Window
     {
-        public settings()
+        public settings() {
+            InitializeComponent();
+        }
+        public settings(User u)
         {
-            
+            if (u.LoggedIn == true) {
+                login.Visibility = Visibility.Collapsed;
+                signUp.Visibility = Visibility.Collapsed;
+                sync.Visibility = Visibility.Visible;
+                signOut.Visibility = Visibility.Visible;
+                
+            }
             InitializeComponent();
         }
 

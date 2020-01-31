@@ -16,17 +16,17 @@
             <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Height="35" Margin="0,0,1.5,0">
                 <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left"  Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,396,0">
                     <Button.Background>
-                        <ImageBrush ImageSource="iconfinder_plus_alt_118618.png"/>
+                        <ImageBrush ImageSource="../Images/iconfinder_plus_alt_118618.png"/>
                     </Button.Background>
                 </Button>
                 <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,5,0">
                     <Button.Background>
-                        <ImageBrush ImageSource="iconfinder_settings_115801.png"/>
+                        <ImageBrush ImageSource="../Images/iconfinder_settings_115801.png"/>
                     </Button.Background>
                 </Button>
                 <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,3,0">
                     <Button.Background>
-                        <ImageBrush ImageSource="iconfinder_ic_close_48px_352270.png"/>
+                        <ImageBrush ImageSource="../Images/iconfinder_ic_close_48px_352270.png"/>
                     </Button.Background>
                 </Button>
             </StackPanel>
@@ -34,7 +34,7 @@
         <TextBox HorizontalAlignment="Left" Height="30" Margin="10,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="445" FontWeight="Medium" FontSize="16"/>
         <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="460,54,0,536" RenderTransformOrigin="1.6,2.067">
             <Button.Background>
-                <ImageBrush ImageSource="iconfinder_icon-111-search_314478.png"/>
+                <ImageBrush ImageSource="../Images/iconfinder_icon-111-search_314478.png"/>
             </Button.Background>
         </Button>
         <DataGrid HorizontalAlignment="Left" Height="100" Margin="24,105,0,0" VerticalAlignment="Top" Width="447.5"/>

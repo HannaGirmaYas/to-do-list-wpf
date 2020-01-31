@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using to_do_list_wpf.Model;
 
-namespace Morning_Bell
+namespace to_do_list_wpf
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -23,14 +24,14 @@ namespace Morning_Bell
 	{
 		public MainWindow() {
 			InitializeComponent();
-			Task t = new Task("DOMINATE");
-			t.Items.Add(new Task.ChecklistItem("Get a pet"));
-			t.Items.Add(new Task.ChecklistItem("Get a bombshell"));
-			t.Items.Add(new Task.ChecklistItem("Get a black leather jacket"));
-			t.Items.Add(new Task.ChecklistItem("Get a Harley"));
-			t.Items.Add(new Task.ChecklistItem("Don't get a haircut"));
-			t.Items.Add(new Task.ChecklistItem("Join the Serbian Special Forces"));
-			t.Items.Add(new Task.ChecklistItem("Get a haircut"));
+			to_do_list_wpf.Model.to_doTask t = new to_do_list_wpf.Model.to_doTask("DOMINATE");
+			t.Items.Add(new to_doTask.ChecklistItem("Get a pet"));
+			t.Items.Add(new to_doTask.ChecklistItem("Get a bombshell"));
+			t.Items.Add(new to_doTask.ChecklistItem("Get a black leather jacket"));
+			t.Items.Add(new to_doTask.ChecklistItem("Get a Harley"));
+			t.Items.Add(new to_doTask.ChecklistItem("Don't get a haircut"));
+			t.Items.Add(new to_doTask.ChecklistItem("Join the Serbian Special Forces"));
+			t.Items.Add(new to_doTask.ChecklistItem("Get a haircut"));
 			MainFrame.Navigate(new TaskView(t));
 		}
 	}

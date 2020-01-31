@@ -17,7 +17,6 @@ namespace to_do_list_wpf.Model
             this.Tasks = task;
             this.ID=id;
 
-
         }
         public string Username { get; set; }
         public int Password { get; set; }

@@ -96,9 +96,10 @@
     <Compile Include="Model\Count.cs" />
     <Compile Include="Model\FireBase.cs" />
     <Compile Include="Model\User.cs" />
-    Compile Include="windows\HomeWindow.xaml.cs">
+	<Compile Include="windows\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
+    
     <Compile Include="windows\LoginAndSignUp.xaml.cs">
       <DependentUpon>LoginAndSignUp.xaml</DependentUpon>
     </Compile>
@@ -164,8 +165,8 @@
 	<Page Include="windows\SettingsPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	  </Page>
+	</ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

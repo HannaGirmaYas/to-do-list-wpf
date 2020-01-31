@@ -23,5 +23,25 @@ namespace to_do_list_wpf.windows
         {
             InitializeComponent();
         }
+
+        private void ClickSignOut(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickSync(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickSignUp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickLogin(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

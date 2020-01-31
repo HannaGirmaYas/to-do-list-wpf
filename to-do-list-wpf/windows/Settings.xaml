@@ -1,0 +1,78 @@
+﻿<Window x:Class="to_do_list_wpf.windows.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:to_do_list_wpf.windows"
+        mc:Ignorable="d"
+       Title="Window1" Height="620" Width="500"
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        >
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="35"/>
+    </WindowChrome.WindowChrome>
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="18*"/>
+           
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Top" Background="Beige">
+            <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Height="35" Margin="0,0,1.5,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left"  Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,396,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="user.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  Click="Button_Click"
+                        VerticalAlignment="Center" Width="30" Margin="0,0,5,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="user.jpg"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,3,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="user.jpg"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="user.jpg" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150"/>
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <TextBlock  Margin="0,20" HorizontalAlignment="Center" Text="Sign In To Sync your tasks to the cloud!!"/>
+                <Button Background="#009977" BorderBrush="#009977" Content="Login"  Width="100" Height="30"  FontSize="15" Click="ClickLogin" Name="login"  />
+                <TextBlock Text="Or" Margin="0,10" FontSize="20" HorizontalAlignment="Center"/>
+                <Button  Background="#009977" BorderBrush="#009977" Content="SignUp"  Width="100" Height="30"  FontSize="15" Click="ClickSignUp" Name="signUp"  />
+                <Button Visibility="Hidden" Margin="0,10" Background="#009977" BorderBrush="#009977" Content="Sync Now"  Width="100" Height="30"  FontSize="15" Click="ClickSync" Name="sync"  />
+                <Button Visibility="Collapsed" Background="#009977" BorderBrush="#009977" Content="Sign Out "  Width="100" Height="30"  FontSize="15" Click="ClickSignOut" Name="signOut"  />
+
+            </StackPanel>
+
+        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBlock Background="#009977" Padding="20,5" Text="Color" Margin="10,10" FontSize="20" HorizontalAlignment="Left"/>
+            <RadioButton Background="#009977" Margin="40,10" Content="Light Mode "  Width="100" Height="30" HorizontalAlignment="Left" FontSize="15" Name="Light"/>
+            <RadioButton Background="#009977" Margin="40,0" Content="Dark Mode "  Width="100" Height="30" HorizontalAlignment="Left" FontSize="15" Name="Dark"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock Background="#009977" Padding="20,5" Text="About" Margin="10,10" FontSize="20" HorizontalAlignment="Left"/>
+            <TextBlock  Text="The to do list app  Lccaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" TextWrapping="Wrap" Width="300" Margin="10,10" FontSize="20" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+    </Grid>
+</Window>

@@ -31,40 +31,61 @@ namespace to_do_list_wpf.Model
                 }
             }
 
-            public User GetUser(string username)
-            {
-                FirebaseResponse response = client.Get("ToDoList/Users/" + username);
-                return response.ResultAs<User>();
-            }
+           
 
             public  List<User> GetAllUsers()
             {
                 int i;
 
 
-            List<User> users = new List<User>();
-                 FirebaseResponse response = client.Get("ToDoList/Users/Count/node");
+                List<User> users = new List<User>();
+                FirebaseResponse response = client.Get("ToDoList/Users/Count/node");
                 Count count = response.ResultAs<Count>();
+                Console.WriteLine(count.CountUsers);
                 int countq = Convert.ToInt32(count.CountUsers);
-                for (i=0; i<countq;i++) {
-                    response = client.Get("ToDoList/Users/" + countq);
+                for (i=1; i<=countq;i++) {
+                    response = client.Get("ToDoList/Users/" + i);
                     users.Add(response.ResultAs<User>());
-                }
+                   
+            }
                 return users;
             }
             public async Task<User> AddUser(User u)
             {
-                FirebaseResponse response = client.Get("ToDoList/Users/Count");
+                FirebaseResponse response =  client.Get("ToDoList/Users/Count/node");
                 Count count = (response.ResultAs<Count>());
-                u.ID = count.CountUsers + 1;
+                Console.WriteLine(count.CountUsers);
+                count.CountUsers += 1;
+                u.ID = count.CountUsers ;
+               SetResponse response0 = client.Set("ToDoList/Users/Count/node" , count);
                 SetResponse response1 = client.Set("ToDoList/Users/" + u.ID, u);
                 return response1.ResultAs<User>();
 
 
             }
-
-
+        public bool LoginUser(User u) {
+            u.LoggedIn = true;
+            FirebaseResponse response = client.Update("ToDoList/Users/" + u.ID, u);
+            User uUpdated= response.ResultAs<User>();
+            if (uUpdated.LoggedIn == true) {
+                return true;
+            }
+            return false;
         }
+        public bool LogoutUser(User u)
+        {
+            u.LoggedIn = false;
+            FirebaseResponse response = client.Update("ToDoList/Users/" + u.ID, u);
+            User uUpdated = response.ResultAs<User>();
+            if (uUpdated.LoggedIn == false)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+    }
     }
 
 

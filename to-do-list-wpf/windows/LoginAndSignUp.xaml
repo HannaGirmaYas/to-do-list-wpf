@@ -11,7 +11,7 @@
     </Window.Resources>
     <Grid>
         <StackPanel Width="490" HorizontalAlignment="Left">
-            <Image Height="660"  Source="to-do-list.jpg"/>
+            <Image Height="660"  Source="../Images/todolist.jpg"/>
 
         </StackPanel>
         <StackPanel Width="490" HorizontalAlignment="Right" >

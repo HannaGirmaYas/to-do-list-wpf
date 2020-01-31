@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Morning_Bell;
+using FireSharp.Config;
+using FireSharp.Response;
+using FireSharp.Interfaces;
 using to_do_list_wpf.Model;
 
 namespace to_do_list_wpf.windows
@@ -22,7 +25,9 @@ namespace to_do_list_wpf.windows
     public partial class LoginAndSignUp : Window
     {
         
+        FBToDo fb = new FBToDo();
         User user;
+        List<User> allusers;
         public LoginAndSignUp()
         {
             InitializeComponent();
@@ -42,44 +47,43 @@ namespace to_do_list_wpf.windows
                 return;
             }
             else {
-                Morning_Bell.Task taskID = new Morning_Bell.Task();
+              allusers = fb.GetAllUsers();
+                if (allusers != null)
+                {
+                    foreach (var userl in allusers)
+                    {
+                        if (userl != null)
+                        {
+                            if (usernameR.Text != userl.Username)
+                            {
+                                usernameR.Text = "Occupied Username";
+                            }
+                        }
+                    }
+                }
+                Morning_Bell.Task task = new Morning_Bell.Task();
+                int count = 0;
                 int hashPassword = passwordR.Text.GetHashCode();
-                User newUser = new User(usernameR.Text, hashPassword, email.Text, taskID);
+                User newUser = new User(usernameR.Text,hashPassword,count,email.Text,task);
                 Task<User> x = fb.AddUser(newUser);
 
                 User user = x.Result;
-                if (user.Equals(newUser))
+                if (user.Username==newUser.Username)
                 {
-                    MessageBox.Show("iS EQUAL");
-                    Settings s = new Settings();
-                    s.Show();
+                   //Next page
+                    settings s = new settings();
                     this.Close();
+                    s.Show();
+                    
                 }
+}
+             
+}
 
-            }
-             /*users =fb.GetAllUsers(); 
-             if (users != null) {
-                 if (usernameR.Text != users.User.Length)
-                 {
-                     usernameR.Text = "Occupied Username";
-                 }
-             }
-             //if (allUsers != null) {
-               //  foreach (var u in allUsers)
-               //  {
+        
+       
 
-                // }
-            // }*/
-
-
-        }
-
-        private void ClicSkip(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ClickLogin(object sender, RoutedEventArgs e)
+            private void ClickLogin(object sender, RoutedEventArgs e)
         {
             if (!fb.Connect())
             {
@@ -97,13 +101,16 @@ namespace to_do_list_wpf.windows
                     if (user.Password != passwordL.Text.GetHashCode())
                     {
                         passwordL.Text = "Invalid Password";
+                        return;
                     }
                 }
                 else
                 {
                     MessageBox.Show("No user with that Username");
                 }
-                MessageBox.Show("Logging In");
+                if (usernameL.Text == user.Username && user.Password == passwordL.Text.GetHashCode()) {
+                    MessageBox.Show("Login Successful");
+                }
             }
             
 
@@ -127,6 +134,10 @@ namespace to_do_list_wpf.windows
         private void ClickClose(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ClicSkip(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

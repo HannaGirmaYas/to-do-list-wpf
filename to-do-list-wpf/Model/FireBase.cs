@@ -9,11 +9,7 @@ using FireSharp.Interfaces;
 
 namespace to_do_list_wpf.Model
 {
-    
-
-    namespace to_do_list_wpf.Models
-    {
-        class FBToDo
+     class FBToDo
         {
             IFirebaseClient client;
             IFirebaseConfig config = new FirebaseConfig
@@ -41,14 +37,17 @@ namespace to_do_list_wpf.Model
                 return response.ResultAs<User>();
             }
 
-            public List<User> GetAllUsers()
+            public  List<User> GetAllUsers()
             {
                 int i;
-                List<User> users = new List<User>();
-                FirebaseResponse response = client.Get("ToDoList/Users/Count");
-                int count = int.Parse(response.ResultAs<String>());
-                for (i=0; i<count;i++) {
-                    response = client.Get("ToDoList/Users/" + count);
+
+
+            List<User> users = new List<User>();
+                 FirebaseResponse response = client.Get("ToDoList/Users/Count/node");
+                Count count = response.ResultAs<Count>();
+                int countq = Convert.ToInt32(count.CountUsers);
+                for (i=0; i<countq;i++) {
+                    response = client.Get("ToDoList/Users/" + countq);
                     users.Add(response.ResultAs<User>());
                 }
                 return users;
@@ -56,9 +55,9 @@ namespace to_do_list_wpf.Model
             public async Task<User> AddUser(User u)
             {
                 FirebaseResponse response = client.Get("ToDoList/Users/Count");
-                int count = int.Parse(response.ResultAs<String>());
-                u.ID = count + 1;
-                SetResponse response1 = await client.SetTaskAsync("ToDoList/Users/" + u.ID, u);
+                Count count = (response.ResultAs<Count>());
+                u.ID = count.CountUsers + 1;
+                SetResponse response1 = client.Set("ToDoList/Users/" + u.ID, u);
                 return response1.ResultAs<User>();
 
 
@@ -68,4 +67,4 @@ namespace to_do_list_wpf.Model
         }
     }
 
-}
+

@@ -21,6 +21,7 @@ namespace to_do_list_wpf.windows
     {
         public settings()
         {
+            
             InitializeComponent();
         }
 
@@ -36,12 +37,14 @@ namespace to_do_list_wpf.windows
 
         private void ClickSignUp(object sender, RoutedEventArgs e)
         {
-
+            LoginAndSignUp ls = new LoginAndSignUp();
+            ls.ShowDialog();
         }
 
         private void ClickLogin(object sender, RoutedEventArgs e)
         {
-
+            LoginAndSignUp ls = new LoginAndSignUp();
+            ls.ShowDialog();
         }
     }
 }

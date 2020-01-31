@@ -7,9 +7,9 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.CompilerServices;
 
-namespace Morning_Bell
+namespace to_do_list_wpf.Model
 {
-	public class Task : INotifyPropertyChanged
+	public class to_doTask : INotifyPropertyChanged
 	{
 		private string title;
 		public string Title {
@@ -35,7 +35,7 @@ namespace Morning_Bell
 		public DateTime ModifiedAt { get; set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
-		public Task(string title = "", string description = "") {
+		public to_doTask(string title = "", string description = "") {
 			this.Items = new ObservableCollection<ChecklistItem>();
 			this.CreatedAt = DateTime.Now;
 			this.ModifiedAt = DateTime.Now;

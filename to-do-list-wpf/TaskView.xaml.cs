@@ -10,24 +10,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using to_do_list_wpf.Model;
 
-namespace Morning_Bell
+namespace to_do_list_wpf
 {
 	/// <summary>
 	/// Interaction logic for TaskView.xaml
 	/// </summary>
 	public partial class TaskView : Page
 	{
-		private Task task;
-		public TaskView(Task task) {
+		private to_doTask task;
+		public TaskView(to_doTask task) {
 			this.task = task;
 			this.DataContext = this.task;
 			InitializeComponent();
-			itemListBox.SelectionMode = SelectionMode.Single;
 		}
 
 		private void AddItem(object sender, RoutedEventArgs e) {
 			this.task.AddNewItem();
+		}
+
+		private void RemoveItem(object sender, RoutedEventArgs e) {
+			this.task.Items.Remove((sender as Button).DataContext as to_doTask.ChecklistItem);
 		}
 	}
 }

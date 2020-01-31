@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Morning_Bell;
 using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
@@ -61,7 +60,7 @@ namespace to_do_list_wpf.windows
                         }
                     }
                 }
-                Morning_Bell.Task task = new Morning_Bell.Task();
+                to_doTask task = new to_doTask();
                 int count = 0;
                 int hashPassword = passwordR.Text.GetHashCode();
                 User newUser = new User(usernameR.Text,hashPassword,count,email.Text,task);

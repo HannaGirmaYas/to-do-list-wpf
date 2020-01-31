@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using to_do_list_wpf.Model;
+using to_do_list_wpf.windows;
 
 namespace to_do_list_wpf
 {
@@ -32,7 +33,9 @@ namespace to_do_list_wpf
 			t.Items.Add(new to_doTask.ChecklistItem("Don't get a haircut"));
 			t.Items.Add(new to_doTask.ChecklistItem("Join the Serbian Special Forces"));
 			t.Items.Add(new to_doTask.ChecklistItem("Get a haircut"));
-			MainFrame.Navigate(new TaskView(t));
+			TaskViewWindow.OpenATaskViewWindow(t);
+			TaskViewWindow.OpenATaskViewWindow(t);
+			TaskViewWindow.OpenATaskViewWindow(t);
 		}
 	}
 	

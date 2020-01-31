@@ -8,61 +8,48 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsPage1">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="16*"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<StackPanel  Grid.Row="0">
+			<StackPanel Background="LightGray">
+				<TextBlock  Padding="20,5" Text="Account" Margin="10,10" FontSize="20" HorizontalAlignment="Left" />
+			</StackPanel>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="2*"/>
+				</Grid.ColumnDefinitions>
+				<Image Margin="10" Grid.Column="0" Source="../Images/user.jpg" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150"/>
+				<StackPanel Orientation="Vertical" Grid.Column="1">
+					<TextBlock  Margin="0,20" HorizontalAlignment="Center" Text="Sign In To Sync your tasks to the cloud!!"/>
+					<Button Background="#009977" BorderBrush="#009977" Content="Login"  Width="100" Height="30"  FontSize="15" Click="ClickLogin" Name="login"  />
+					<TextBlock Text="Or" Margin="0,10" FontSize="20" HorizontalAlignment="Center"/>
+					<Button  Background="#009977" BorderBrush="#009977" Content="SignUp"  Width="100" Height="30"  FontSize="15" Click="ClickSignUp" Name="signUp"  />
+					<Button Visibility="Hidden" Margin="0,10" Background="#009977" BorderBrush="#009977" Content="Sync Now"  Width="100" Height="30"  FontSize="15" Click="ClickSync" Name="sync"  />
+					<Button Visibility="Collapsed" Background="#009977" BorderBrush="#009977" Content="Sign Out "  Width="100" Height="30"  FontSize="15" Click="ClickSignOut" Name="signOut"  />
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+		
+		<StackPanel Grid.Row="1" Orientation="Vertical">
+			<StackPanel Background="LightGray">
+				<TextBlock  Padding="20,5" Text="Color" Margin="10,10" FontSize="20" HorizontalAlignment="Left" />
+			</StackPanel>
+			<RadioButton Background="#009977" Margin="40,10" Content="Light Mode "  Width="100" Height="30" HorizontalAlignment="Left" FontSize="15" Name="Light"/>
+			<RadioButton Background="#009977" Margin="40,0" Content="Dark Mode "  Width="100" Height="30" HorizontalAlignment="Left" FontSize="15" Name="Dark"/>
 
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" VerticalAlignment="Top" Background="Beige">
-            <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Height="35" Margin="0,0,1.5,0">
-                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left"  Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,396,0">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../Images/iconfinder_plus_alt_118618.png"/>
-                    </Button.Background>
-                </Button>
-
-                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Center" Width="30" Margin="0,0,3,0">
-                    <Button.Background>
-                        <ImageBrush ImageSource="../Images/iconfinder_ic_close_48px_352270.png"/>
-                    </Button.Background>
-                </Button>
+		</StackPanel>
+		
+		<StackPanel Grid.Row="2" Orientation="Vertical">
+			<StackPanel Background="LightGray">
+				<TextBlock  Padding="20,5" Text="About" Margin="10,10" FontSize="20" HorizontalAlignment="Left" />
+			</StackPanel>
+                <TextBlock FontSize="12" Text="The to do list app  Lccaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" TextWrapping="Wrap" Width="300" Margin="10,10" HorizontalAlignment="Left"/>
             </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="../Images/user.jpg" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150"/>
-                <StackPanel Orientation="Vertical" Grid.Column="1">
-                    <TextBlock  Margin="0,20" HorizontalAlignment="Center" Text="Sign In To Sync your tasks to the cloud!!"/>
-                    <Button Background="#009977" BorderBrush="#009977" Content="Login"  Width="100" Height="30"  FontSize="15" Click="ClickLogin" Name="login"  />
-                    <TextBlock Text="Or" Margin="0,10" FontSize="20" HorizontalAlignment="Center"/>
-                    <Button  Background="#009977" BorderBrush="#009977" Content="SignUp"  Width="100" Height="30"  FontSize="15" Click="ClickSignUp" Name="signUp"  />
-                    <Button Visibility="Hidden" Margin="0,10" Background="#009977" BorderBrush="#009977" Content="Sync Now"  Width="100" Height="30"  FontSize="15" Click="ClickSync" Name="sync"  />
-                    <Button Visibility="Collapsed" Background="#009977" BorderBrush="#009977" Content="Sign Out "  Width="100" Height="30"  FontSize="15" Click="ClickSignOut" Name="signOut"  />
-
-                </StackPanel>
-
-            </Grid>
-            <StackPanel Grid.Row="1" Orientation="Vertical">
-                <TextBlock Background="#009977" Padding="20,5" Text="Color" Margin="10,10" FontSize="20" HorizontalAlignment="Left"/>
-                <RadioButton Background="#009977" Margin="40,10" Content="Light Mode "  Width="100" Height="30" HorizontalAlignment="Left" FontSize="15" Name="Light"/>
-                <RadioButton Background="#009977" Margin="40,0" Content="Dark Mode "  Width="100" Height="30" HorizontalAlignment="Left" FontSize="15" Name="Dark"/>
-
-            </StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Vertical">
-                <TextBlock Background="#009977" Padding="20,5" Text="About" Margin="10,10" FontSize="20" HorizontalAlignment="Left"/>
-                <TextBlock  Text="The to do list app  Lccaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" TextWrapping="Wrap" Width="300" Margin="10,10" FontSize="20" HorizontalAlignment="Left"/>
-            </StackPanel>
-        </Grid>
-    </Grid>
+	</Grid>
 </Page>

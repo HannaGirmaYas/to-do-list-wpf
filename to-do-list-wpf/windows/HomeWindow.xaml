@@ -6,33 +6,42 @@
         xmlns:local="clr-namespace:to_do_list_wpf.windows"
         mc:Ignorable="d"
         Title="MainPage" Height="620" Width="500"
+		
+		TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+		Background="{DynamicResource MaterialDesignPaper}"
+		TextElement.FontWeight="Medium" TextElement.FontSize="14" 
+		FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+		
         WindowStyle="None" AllowsTransparency="True">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35"/>
     </WindowChrome.WindowChrome>
     <Grid VerticalAlignment="Top" Background="Beige">
         <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Height="35" Margin="0,0,1.5,0">
-            <Button x:Name="addTaskButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left"  Height="30"  VerticalAlignment="Bottom" Width="30" Margin="0,0,360,3" Foreground="#DDF5E7E7" Click="addTaskButton_Click">
-                <!--<Button.Background>
-                    <ImageBrush ImageSource=""/>
-                </Button.Background>-->
-            </Button>
-            <Button x:Name="minimizeButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Width="30" Margin="0,5,5,0" Foreground="#DDF5E7E7" Click="minimizeButton_Click">
-                <!--<Button.Background>
-                    <ImageBrush ImageSource=""/>
-                </Button.Background>-->
-            </Button>
-            <Button x:Name="settingButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Top" Width="30" Margin="0,2,5,0" RenderTransformOrigin="-0.064,0.607" Click="settingButton_Click">
-                <!--<Button.Background>
-                    <ImageBrush ImageSource=""/>
-                </Button.Background>-->
-            </Button>
-            <Button x:Name="closeButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Width="30" Margin="0,2,3,3" Click="closeButton_Click">
-                <!--<Button.Background>
-                    <ImageBrush ImageSource="../Images/iconfinder_ic_close_48px_352270.png"/>
-                </Button.Background>-->
-            </Button>
-        </StackPanel>
+			<Button x:Name="addTaskButton" BorderThickness="0" HorizontalAlignment="Left"  Height="30"  VerticalAlignment="Bottom"  Width="30" Margin="0,0,360,3"
+					Click="addTaskButton_Click">
+				<Button.Background>
+					<ImageBrush ImageSource="..\Images\iconfinder_plus_alt_118618.png" />
+				</Button.Background>
+			</Button>
+			<Button x:Name="minimizeButton" BorderThickness="0"  HorizontalAlignment="Left" Width="30" Margin="0,5,5,0" 
+					Click="minimizeButton_Click">
+				<Button.Background>
+					<ImageBrush ImageSource="..\Images\iconfinder_plus_alt_118618.png" />
+				</Button.Background>
+			</Button>
+			<Button x:Name="settingButton" BorderThickness="0" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Top" Width="30" Margin="0,2,5,0" RenderTransformOrigin="-0.064,0.607"
+					Click="settingButton_Click">
+				<Button.Background>
+					<ImageBrush ImageSource="..\Images\iconfinder_settings_115801.png" />
+				</Button.Background>
+			</Button>
+			<Button x:Name="closeButton" BorderThickness="0" HorizontalAlignment="Left" Width="30" Margin="0,2,3,3" Click="closeButton_Click">
+				<Button.Background>
+					<ImageBrush ImageSource="..\Images\iconfinder_ic_close_48px_352270.png" />
+				</Button.Background>
+			</Button>
+		</StackPanel>
         <Frame x:Name="mainFrame" HorizontalAlignment="Left" Height="583" Margin="0,37,0,-585" VerticalAlignment="Top" Width="498" NavigationUIVisibility="Hidden"/>
     </Grid>
 

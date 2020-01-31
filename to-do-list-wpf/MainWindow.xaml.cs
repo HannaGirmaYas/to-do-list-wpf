@@ -25,14 +25,14 @@ namespace to_do_list_wpf
 	{
 		public MainWindow() {
 			InitializeComponent();
-			to_do_list_wpf.Model.to_doTask t = new to_do_list_wpf.Model.to_doTask("DOMINATE");
-			t.Items.Add(new to_doTask.ChecklistItem("Get a pet"));
-			t.Items.Add(new to_doTask.ChecklistItem("Get a bombshell"));
-			t.Items.Add(new to_doTask.ChecklistItem("Get a black leather jacket"));
-			t.Items.Add(new to_doTask.ChecklistItem("Get a Harley"));
-			t.Items.Add(new to_doTask.ChecklistItem("Don't get a haircut"));
-			t.Items.Add(new to_doTask.ChecklistItem("Join the Serbian Special Forces"));
-			t.Items.Add(new to_doTask.ChecklistItem("Get a haircut"));
+			to_doTask t = new to_doTask("DOMINATE");
+			t.AddNewItem("Get a pet");
+			t.AddNewItem("Get a bombshell");
+			t.AddNewItem("Get a black leather jacket");
+			t.AddNewItem("Get a Harley");
+			t.AddNewItem("Don't get a haircut");
+			t.AddNewItem("Join the Serbian Special Forces");
+			t.AddNewItem("Get a haircut");
 			TaskViewWindow.OpenATaskViewWindow(t);
 			TaskViewWindow.OpenATaskViewWindow(t);
 			TaskViewWindow.OpenATaskViewWindow(t);

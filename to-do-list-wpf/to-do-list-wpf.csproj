@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models.cs" />
     <Compile Include="Model\FireBase.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="windows\LoginAndSignUp.xaml.cs">

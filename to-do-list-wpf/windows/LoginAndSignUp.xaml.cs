@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Morning_Bell;
-using to_do_list_wpf.Models;
+using to_do_list_wpf.Model;
 
 namespace to_do_list_wpf.windows
 {
@@ -21,7 +21,7 @@ namespace to_do_list_wpf.windows
     /// </summary>
     public partial class LoginAndSignUp : Window
     {
-        FBToDo fb = new FBToDo();
+        
         User user;
         public LoginAndSignUp()
         {

@@ -41,19 +41,29 @@ namespace to_do_list_wpf.Model
                 return response.ResultAs<User>();
             }
 
-            public User GetAllUsers()
+            public List<User> GetAllUsers()
             {
-
-                FirebaseResponse response = client.Get("ToDoList/Users");
-                return response.ResultAs<User>();
+                int i;
+                List<User> users = new List<User>();
+                FirebaseResponse response = client.Get("ToDoList/Users/Count");
+                int count = int.Parse(response.ResultAs<String>());
+                for (i=0; i<count;i++) {
+                    response = client.Get("ToDoList/Users/" + count);
+                    users.Add(response.ResultAs<User>());
+                }
+                return users;
             }
             public async Task<User> AddUser(User u)
             {
-                SetResponse response = await client.SetTaskAsync("ToDoList/Users/" + u.Username, u);
-                return response.ResultAs<User>();
+                FirebaseResponse response = client.Get("ToDoList/Users/Count");
+                int count = int.Parse(response.ResultAs<String>());
+                u.ID = count + 1;
+                SetResponse response1 = await client.SetTaskAsync("ToDoList/Users/" + u.ID, u);
+                return response1.ResultAs<User>();
 
 
             }
+
 
         }
     }

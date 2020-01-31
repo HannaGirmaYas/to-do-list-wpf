@@ -60,10 +60,13 @@ namespace to_do_list_wpf.windows
                         }
                     }
                 }
-                to_doTask t = new to_doTask("", "");
-                if (t == null) { MessageBox.Show("null"); }
                 MessageBox.Show("here");
-                TaskJ tasks = new TaskJ(t);
+                to_doTask t = new to_doTask("", "");
+                if (t == null) { 
+                    MessageBox.Show("null"); 
+                }
+                MessageBox.Show("here");
+                TaskJ[] tasks = new TaskJ[100];
                 int count = 0;
                 int hashPassword = passwordR.Text.GetHashCode();
                 bool loggedIn = false;

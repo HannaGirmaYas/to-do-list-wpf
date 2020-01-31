@@ -10,7 +10,7 @@ namespace to_do_list_wpf.Model
     {
         public User() { }
 
-        public User(string username, int password, int id, string email, TaskJ task,bool loggedIn)
+        public User(string username, int password, int id, string email, TaskJ[] task,bool loggedIn)
 
    
         {
@@ -28,7 +28,7 @@ namespace to_do_list_wpf.Model
         public int ID { get; set; }
         public bool LoggedIn { get; set; }
         public string Email { get; set; }
-        public TaskJ Tasks { get; set; }
+        public TaskJ[] Tasks { get; set; }
     }
     public class TaskJ
     {

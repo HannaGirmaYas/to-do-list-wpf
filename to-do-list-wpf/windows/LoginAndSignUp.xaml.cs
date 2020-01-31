@@ -23,7 +23,6 @@ namespace to_do_list_wpf.windows
     {
         FBToDo fb = new FBToDo();
         User user;
-        Users users;
         public LoginAndSignUp()
         {
             InitializeComponent();
@@ -43,7 +42,7 @@ namespace to_do_list_wpf.windows
                 return;
             }
             else {
-                string taskID = RandomTaskID(usernameR.Text);
+                Morning_Bell.Task taskID = new Morning_Bell.Task();
                 int hashPassword = passwordR.Text.GetHashCode();
                 User newUser = new User(usernameR.Text, hashPassword, email.Text, taskID);
                 Task<User> x = fb.AddUser(newUser);

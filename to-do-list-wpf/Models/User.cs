@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Morning_Bell;
 using System.Threading.Tasks;
 
 namespace to_do_list_wpf.Models
@@ -9,7 +10,7 @@ namespace to_do_list_wpf.Models
     public class User
     {
         public User() { }
-        public User(string username, int password, string email, string taskID) {
+        public User(string username, int password, string email, Morning_Bell.Task taskID) {
             this.Username = username;
             this.Email = email;
             this.Password = password;
@@ -20,10 +21,10 @@ namespace to_do_list_wpf.Models
         public string Username { get; set; }
         public int Password { get; set; }
         public string Email { get; set; }
-        public string TasksId { get; set; }
+        public Morning_Bell.Task TasksId { get; set; }
     }
-    public class Users
+   /* public class Users
     {
         public Array User { get; set; }
-    }
+    }*/
 }

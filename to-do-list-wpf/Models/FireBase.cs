@@ -34,11 +34,11 @@ namespace to_do_list_wpf.Models
             return response.ResultAs<User>();
         }
 
-        public Users GetAllUsers()
+        public User GetAllUsers()
         {
            
             FirebaseResponse response = client.Get("ToDoList/Users" );
-            return response.ResultAs<Users>();
+            return response.ResultAs<User>();
         }
         public async Task<User> AddUser(User u) {
             SetResponse response = await client.SetAsync("ToDoList/Users/" + u.Username, u);

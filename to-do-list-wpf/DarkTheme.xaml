@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Morning_Bell">
+                    xmlns:local="clr-namespace:to_do_list_wpf">
 	<SolidColorBrush  x:Key="mainForeground" Color="#FFDADADA" />
 	<SolidColorBrush x:Key="mainBackground" Color="#FF231F20"/>
 	<SolidColorBrush x:Key="mainAccent" Color="#FF9aa0ba"/>

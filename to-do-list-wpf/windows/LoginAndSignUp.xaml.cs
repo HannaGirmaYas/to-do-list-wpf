@@ -45,8 +45,22 @@ namespace to_do_list_wpf.windows
                 return;
             }
             else {
-              allusers = fb.GetAllUsers();
-                if (allusers != null)
+                //allusers = fb.GetAllUsers();
+                //  if (allusers != null)
+                //  {
+                //      foreach (var userl in allusers)
+                //      {
+                //          if (userl != null)
+                //          {
+                //              if (usernameR.Text != userl.Username)
+                //              {
+                //                  usernameR.Text = "Occupied Username";
+                //              }
+                //          }
+                //      }
+
+                User u = fb.GetUser(usernameR.Text);
+                if (u != null)
                 {
                     foreach (var userl in allusers)
                     {

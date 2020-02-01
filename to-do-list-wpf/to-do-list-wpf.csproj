@@ -96,9 +96,6 @@
     <Compile Include="Model\Count.cs" />
     <Compile Include="Model\FireBase.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="TaskView.xaml.cs">
-      <DependentUpon>TaskView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="windows\LoginAndSignUp.xaml.cs">
       <DependentUpon>LoginAndSignUp.xaml</DependentUpon>
     </Compile>
@@ -107,6 +104,9 @@
     </Compile>
     <Compile Include="windows\settings.xaml.cs">
       <DependentUpon>settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\TaskViewWindow.xaml.cs">
+      <DependentUpon>TaskViewWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="DarkTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -128,10 +128,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TaskView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="windows\LoginAndSignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\TaskViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -30,13 +30,15 @@ namespace to_do_list_wpf.Model
 			}
 		}
 
-		public ObservableCollection<ChecklistItem> Items { get; private set; }
+        public List<ChecklistItem> items=new List<ChecklistItem>();
+
+        //public ObservableCollection<ChecklistItem> Items { get; private set; } = new ObservableCollection<ChecklistItem>(items);
 		public DateTime CreatedAt { get; set; }
 		public DateTime ModifiedAt { get; set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		public to_doTask(string title = "", string description = "") {
-			this.Items = new ObservableCollection<ChecklistItem>();
+			this.items = new List<ChecklistItem>();
 			this.CreatedAt = DateTime.Now;
 			this.ModifiedAt = DateTime.Now;
 			this.description = description;
@@ -48,13 +50,13 @@ namespace to_do_list_wpf.Model
 		}
 
 		public void AddNewItem(string text = "") {
-			lock (Items) {
-				foreach (var item in this.Items.ToList()) {
+			lock (items) {
+				foreach (var item in this.items.ToList()) {
 					if (item.Text.Trim().Equals("")) {
-						this.Items.Remove(item);
+						this.items.Remove(item);
 					}
 				}
-				this.Items.Add(new ChecklistItem(text));
+				this.items.Add(new ChecklistItem(text));
 				OnPropertyChanged();
 			}
 		}

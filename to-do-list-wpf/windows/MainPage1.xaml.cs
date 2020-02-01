@@ -37,7 +37,7 @@ namespace to_do_list_wpf.windows
 		}
 
 		private void searchButton_Click(object sender, RoutedEventArgs e) {
-
+            //
 		}
 
 		private void deleteTaskButton_Click(object sender, RoutedEventArgs e) {

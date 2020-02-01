@@ -26,7 +26,8 @@ namespace to_do_list_wpf.windows
         
         FBToDo fb = new FBToDo();
         User user;
-        List<User> allusers;
+        //List<User> allusers;
+
         public LoginAndSignUp()
         {
             InitializeComponent();
@@ -46,43 +47,47 @@ namespace to_do_list_wpf.windows
                 return;
             }
             else {
-              allusers = fb.GetAllUsers();
-                if (allusers != null)
-                {
-                    foreach (var userl in allusers)
-                    {
-                        if (userl != null)
-                        {
-                            if (usernameR.Text != userl.Username)
-                            {
-                                usernameR.Text = "Occupied Username";
-                            }
-                        }
-                    }
-                }
-                to_doTask task = new to_doTask();
-                int count = 0;
-                int hashPassword = passwordR.Text.GetHashCode();
-                User newUser = new User(usernameR.Text,hashPassword,count,email.Text,task);
-                Task<User> x = fb.AddUser(newUser);
+                //allusers = fb.GetAllUsers();
+                //  if (allusers != null)
+                //  {
+                //      foreach (var userl in allusers)
+                //      {
+                //          if (userl != null)
+                //          {
+                //              if (usernameR.Text != userl.Username)
+                //              {
+                //                  usernameR.Text = "Occupied Username";
+                //              }
+                //          }
+                //      }
 
-                User user = x.Result;
-                if (user.Username==newUser.Username)
+                User u = fb.GetUser(usernameR.Text);
+                if (u != null)
                 {
-                   //Next page
-                    settings s = new settings();
-                    this.Close();
-                    s.Show();
+                    MessageBox.Show("Occupied Username");
+                    return;
+                }
+                
+             }
+                
+            //int count = 0;
+            int hashPassword = passwordR.Text.GetHashCode();
+            
+            User newUser = new User(usernameR.Text,hashPassword,email.Text);
+            Task<User> user = fb.AddUser(newUser);
+            //checkout code here
+            if (user.Result.Username==newUser.Username)
+            {
+                //Next page
+                settings s = new settings();
+                this.Close();
+                s.Show();
                     
-                }
-}
+            }
+        }
              
-}
 
-        
-       
-
-            private void ClickLogin(object sender, RoutedEventArgs e)
+        private void ClickLogin(object sender, RoutedEventArgs e)
         {
             if (!fb.Connect())
             {
@@ -99,21 +104,22 @@ namespace to_do_list_wpf.windows
                 {
                     if (user.Password != passwordL.Text.GetHashCode())
                     {
-                        passwordL.Text = "Invalid Password";
+                        MessageBox.Show("Invalid Password");
                         return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Successful");
                     }
                 }
                 else
                 {
                     MessageBox.Show("No user with that Username");
                 }
-                if (usernameL.Text == user.Username && user.Password == passwordL.Text.GetHashCode()) {
-                    MessageBox.Show("Login Successful");
-                }
+                
             }
-            
-
         }
+
         private bool Validate(TextBox x) {
             if (string.IsNullOrWhiteSpace(x.Text) || !IsString(x.Text))
             {
@@ -122,13 +128,14 @@ namespace to_do_list_wpf.windows
             }
             return true;
         }
-        public string RandomTaskID(string username)
-        {
-            Random random = new Random();
-            int x= random.Next(0, 1000);
-            string taskID = username + x.ToString();
-            return taskID;
-        }
+
+        //public string RandomTaskID(string username)
+        //{
+        //    Random random = new Random();
+        //    int x= random.Next(0, 1000);
+        //    string taskID = username + x.ToString();
+        //    return taskID;
+        //}
 
         private void ClickClose(object sender, RoutedEventArgs e)
         {

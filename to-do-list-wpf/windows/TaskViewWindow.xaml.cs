@@ -42,7 +42,7 @@ namespace to_do_list_wpf.windows
 		}
 
 		private void RemoveItem(object sender, RoutedEventArgs e) {
-			this.task.Items.Remove((sender as Button).DataContext as to_doTask.ChecklistItem);
+			this.task.items.Remove((sender as Button).DataContext as to_doTask.ChecklistItem);
 		}
 
 		private void CloseWindow(object sender, RoutedEventArgs e) {

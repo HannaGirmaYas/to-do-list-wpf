@@ -10,24 +10,25 @@
       Title="MainPage1">
     <Page.Resources>
         <DataTemplate x:Key="taskOverView">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" Width="400" />
-                <TextBlock Grid.Row="2" Grid.Column="11" Text="{Binding ModifiedAt}" Width="400" />
-				<Button x:Name="deleteTaskButton" Grid.Row="2" Grid.Column="1" Width="30" Click="deleteTaskButton_Click" >
-					<Button.Background>
-						<ImageBrush ImageSource="..\Images\iconfinder_Streamline-70_185090.png" />
-					</Button.Background>
-				</Button>
-			</Grid>
+			<materialDesign:Card Padding="15" MouseDown="OpenTask" >
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="auto" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Title}" FontWeight="Bold" FontSize="19"/>
+					<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding ModifiedAt}" />
+					<Button x:Name="deleteTaskButton" BorderThickness="0" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Width="25" Height="25" Click="deleteTaskButton_Click" >
+						<Button.Background>
+							<ImageBrush ImageSource="..\Images\iconfinder_Streamline-70_185090.png" />
+						</Button.Background>
+					</Button>
+				</Grid>
+			</materialDesign:Card>
         </DataTemplate>
 
     </Page.Resources>
@@ -43,10 +44,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="105"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
-        </Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+		</Grid.RowDefinitions>
 
 		<TextBox x:Name="searchedElement" Grid.Row="1" Grid.Column="1"
 				  materialDesign:HintAssist.Hint="Search" Margin="5" Foreground="Black" FontSize="14"/>
@@ -55,7 +54,8 @@
 				<ImageBrush ImageSource="..\Images\iconfinder_icon-111-search_314478.png" />
 			</Button.Background>
 		</Button>
-		<ListView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding TaskList}" ItemTemplate="{StaticResource taskOverView}"/>
+		<ListView x:Name="taskListView" ItemsSource="{Binding TaskList}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" ItemTemplate="{StaticResource taskOverView}"
+				  materialDesign:ListViewAssist.ListViewItemPadding="5" HorizontalContentAlignment="Stretch" SelectionMode="Single"/>
 
     </Grid>
 </Page>

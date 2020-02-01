@@ -23,7 +23,14 @@ namespace to_do_list_wpf.windows
         {
             
             InitializeComponent();
-            MainPage1 p = new MainPage1();
+
+			this.MouseDown += (sender, e) => {
+				if (e.LeftButton == MouseButtonState.Pressed) {
+					this.DragMove();
+				}
+			};
+
+			MainPage1 p = new MainPage1();
             mainFrame.Navigate(p);
 
         }

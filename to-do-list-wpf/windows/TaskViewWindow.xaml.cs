@@ -20,11 +20,12 @@ namespace to_do_list_wpf.windows
 	/// </summary>
 	public partial class TaskViewWindow : Window
 	{
-		public static void OpenATaskViewWindow(to_doTask task) {
+		public static TaskViewWindow OpenATaskViewWindow(to_doTask task) {
 			var window = new TaskViewWindow();
 			window.task = task;
 			window.DataContext = window.task;
 			window.Show();
+			return window;
 		}
 		public TaskViewWindow() {
 			InitializeComponent();
@@ -47,6 +48,20 @@ namespace to_do_list_wpf.windows
 
 		private void CloseWindow(object sender, RoutedEventArgs e) {
 			this.Close();
+		}
+
+		public bool ContainedTaskEquals(to_doTask task) {
+			if (task == null) {
+				return false;
+			}
+			return this.task == task;
+		}
+
+		public bool IsClosed { get; private set; }
+
+		protected override void OnClosed(EventArgs e) {
+			base.OnClosed(e);
+			IsClosed = true;
 		}
 	}
 }

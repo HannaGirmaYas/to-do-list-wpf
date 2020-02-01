@@ -66,7 +66,7 @@ namespace to_do_list_wpf.windows
                     MessageBox.Show("null"); 
                 }
                 MessageBox.Show("here");
-                TaskJ[] tasks = new TaskJ[100];
+                TaskJ tasks = new TaskJ(t);
                 int count = 0;
                 int hashPassword = passwordR.Text.GetHashCode();
                 bool loggedIn = false;

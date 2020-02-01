@@ -46,7 +46,10 @@
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Source="../Images/user.jpg" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150"/>
                 <StackPanel Orientation="Vertical" Grid.Column="1">
-                    <TextBlock  Margin="0,20" HorizontalAlignment="Center" Text="Sign In To Sync your tasks to the cloud!!"/>
+                    <TextBlock Name="signin" Margin="0,10" HorizontalAlignment="Center" Text="Sign In To Sync your tasks to the cloud!!"/>
+                    <TextBlock Visibility="Collapsed" Name="username" Margin="0,10" HorizontalAlignment="Left" Text="Username"/>
+                    <TextBlock Visibility="Collapsed" Name="email" Margin="0,10" HorizontalAlignment="Left" Text="Email"/>
+
                     <Button Background="#009977" BorderBrush="#009977" Content="Login"  Width="100" Height="30"  FontSize="15" Click="ClickLogin" Name="login"  />
                     <TextBlock Text="Or" Margin="0,10" FontSize="20" HorizontalAlignment="Center"/>
                     <Button  Background="#009977" BorderBrush="#009977" Content="SignUp"  Width="100" Height="30"  FontSize="15" Click="ClickSignUp" Name="signUp"  />

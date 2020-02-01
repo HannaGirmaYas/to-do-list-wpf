@@ -24,22 +24,23 @@ namespace to_do_list_wpf
             {
                 MessageBox.Show("No connection");
             }
-            allusers = fb.GetAllUsers();
+           
+            
+            allusers = fb.GetUsers();
 
             if (allusers != null)
             {
                 foreach (var user in allusers)
                 {
-                    Console.WriteLine("here3");
                     if (user != null)
                     {
-                        Console.WriteLine("here1");
                         if (user.LoggedIn == true)
                         {
-                            Console.WriteLine("here3");
 
                             StartupUri = new Uri("/windows/settings.xaml",
                         UriKind.Relative);
+                            settings s = new settings(user.Username);
+                            s.Activate();
                             return;
 
                         }

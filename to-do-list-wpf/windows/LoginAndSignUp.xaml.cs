@@ -45,19 +45,6 @@ namespace to_do_list_wpf.windows
                 return;
             }
             else {
-                //allusers = fb.GetAllUsers();
-                //  if (allusers != null)
-                //  {
-                //      foreach (var userl in allusers)
-                //      {
-                //          if (userl != null)
-                //          {
-                //              if (usernameR.Text != userl.Username)
-                //              {
-                //                  usernameR.Text = "Occupied Username";
-                //              }
-                //          }
-                //      }
 
                 User u = fb.GetUser(usernameR.Text);
                 if (u != null)
@@ -74,21 +61,11 @@ namespace to_do_list_wpf.windows
                         }
                     }
                 }
-                MessageBox.Show("here");
-                to_doTask t = new to_doTask("", "");
-                if (t == null) { 
-                    MessageBox.Show("null"); 
-                }
-                MessageBox.Show("here");
-                TaskJ tasks = new TaskJ(t);
-                int count = 0;
+                
                 int hashPassword = passwordR.Text.GetHashCode();
                 bool loggedIn = false;
-                User newUser = new User(usernameR.Text,hashPassword,count,email.Text,tasks,loggedIn);
+                User newUser = new User(usernameR.Text,hashPassword,email.Text,loggedIn);
                 User user = fb.AddUser(newUser);
-                
-
-
                 if (user.Username==newUser.Username)
                 {
                     //Next page
@@ -131,12 +108,7 @@ namespace to_do_list_wpf.windows
         {
             this.Close();
         }
-        //Skips without Authentication
-        private void ClicSkip(object sender, RoutedEventArgs e)
-        {
-            settings s = new settings();
-            s.ShowDialog();
-        }
+        
 
 
         //Validate's Inputs
@@ -167,25 +139,10 @@ namespace to_do_list_wpf.windows
         }
         //Validates if User of username is a Signed Up User
         private User IsUser(TextBox x) {
-            allusers = fb.GetAllUsers();
-            Console.WriteLine(allusers.Count + "here");
-            if (allusers != null)
-            {
-                foreach (var user in allusers)
-                {
-                    if (user != null){
-                        
-                        if (x.Text == user.Username)
-                        {
-                            
-                            return user;
-                        }
-                        
-                    }
-                    
-                }
-            }
+            User u = fb.GetUser(x.Text);
+            if (u != null) { return u; }
             return null;
+           
         }
 
         //Checks if Email is a valid email
@@ -252,7 +209,7 @@ namespace to_do_list_wpf.windows
             if (usernameR.Text == "Username" || usernameR.Text == "Invalid Input"|| usernameR.Text == "Occupied Username")
             {
                 usernameR.Text = "";
-                usernameR.FontStyle = FontStyles.Italic;
+                usernameR.FontStyle = FontStyles.Normal;
 
             }
         }
@@ -292,7 +249,7 @@ namespace to_do_list_wpf.windows
             if (passwordR.Text == "Password" || passwordR.Text == "Invalid Input")
             {
                 passwordR.Text = "";
-                passwordR.FontStyle = FontStyles.Italic;
+                passwordR.FontStyle = FontStyles.Normal;
 
             }
         }

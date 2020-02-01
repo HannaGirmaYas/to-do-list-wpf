@@ -38,21 +38,10 @@ namespace to_do_list_wpf.Model
             return response.ResultAs<User>();
         }
 
-        //public  List<User> GetAllUsers()
-        //{
-            
-
-        //    List<User> users = new List<User>();
-        //    FirebaseResponse response = client.Get("ToDoList/Users/");
-        //    return response.ResultAs<List<User>>();
-            
-        //}
-        public async Task<User> AddUser(User u)
+     
+        public User AddUser(User u)
         {
-            //FirebaseResponse response = client.Get("ToDoList/Users/Count");
-            //Count count = (response.ResultAs<Count>());
-            //u.ID = count.CountUsers + 1;
-            //u.TaskList = getTasks();
+            
 
             SetResponse response1 = client.Set("ToDoList/Users/" + u.Username, u);
             return response1.ResultAs<User>();
@@ -61,90 +50,69 @@ namespace to_do_list_wpf.Model
         }
         public List<to_doTask> getTasks()
         {
-        List<to_doTask> t = new List<to_doTask>();
-        t.Add(new to_doTask("task1"));
-        t.Add(new to_doTask("task2"));
-        t.Add(new to_doTask("task3"));
-        t.Add(new to_doTask("task4"));
-        t.Add(new to_doTask("task5"));
-        return t;
+            List<to_doTask> t = new List<to_doTask>();
+            t.Add(new to_doTask("task1"));
+            t.Add(new to_doTask("task2"));
+            t.Add(new to_doTask("task3"));
+            t.Add(new to_doTask("task4"));
+            t.Add(new to_doTask("task5"));
+            return t;
         }
 
         public List<to_doTask> RetrieveTasks(string username)
         {
-            FirebaseResponse response = client.Get("ToDoList/Users/"+username+"/TaskList");
+            FirebaseResponse response = client.Get("ToDoList/Users/" + username + "/TaskList");
             return response.ResultAs<List<to_doTask>>();
         }
-
-        public to_doTask AddTask(string username,to_doTask t)
+        public List<User> GetUsers()
         {
-            SetResponse response=client.Set("ToDoList/Users/" + username + "/TaskList/"+t.Title,t);
+            FirebaseResponse response = client.Get("ToDoList/Users");
+            return response.ResultAs<List<User>>();
+        }
+
+        public to_doTask AddTask(string username, to_doTask t)
+        {
+            SetResponse response = client.Set("ToDoList/Users/" + username + "/TaskList/" + t.Title, t);
             return response.ResultAs<to_doTask>();
         }
 
         public to_doTask GetTask(string username, string title)
         {
-            FirebaseResponse response = client.Get("ToDoList/Users/" + username + "/TaskList/"+title);
+            FirebaseResponse response = client.Get("ToDoList/Users/" + username + "/TaskList/" + title);
             return response.ResultAs<to_doTask>();
         }
 
         public to_doTask UpdateTask(string username, to_doTask t)
         {
-            FirebaseResponse response = client.Update("ToDoList/Users/" + username + "/TaskList/" + t.Title,t);
+            FirebaseResponse response = client.Update("ToDoList/Users/" + username + "/TaskList/" + t.Title, t);
             return response.ResultAs<to_doTask>();
         }
-           
-
-            public  List<User> GetAllUsers()
-            {
-                int i;
-
-
-                List<User> users = new List<User>();
-                FirebaseResponse response = client.Get("ToDoList/Users/Count/node");
-                Count count = response.ResultAs<Count>();
-                Console.WriteLine(count.CountUsers);
-                int countq = Convert.ToInt32(count.CountUsers);
-                for (i=1; i<=countq;i++) {
-                    response = client.Get("ToDoList/Users/" + i);
-                    users.Add(response.ResultAs<User>());
-                   
-            }
-                return users;
-            }
-        public User AddUser(User u)
-            {
-                FirebaseResponse response =  client.Get("ToDoList/Users/Count/node");
-                Count count = (response.ResultAs<Count>());
-                Console.WriteLine(count.CountUsers);
-                count.CountUsers += 1;
-                u.ID = count.CountUsers ;
-               SetResponse response0 = client.Set("ToDoList/Users/Count/node" , count);
-                SetResponse response1 = client.Set("ToDoList/Users/" + u.ID, u);
-                return response1.ResultAs<User>();
 
         public void DeleteTask(string username, string title)
         {
             FirebaseResponse response = client.Delete("ToDoList/Users/" + username + "/TaskList/" + title);
-            
+
         }
         public void DeletAllTask(string username)
         {
-            FirebaseResponse response = client.Delete("ToDoList/Users/" + username + "/TaskList" );
-            
+            FirebaseResponse response = client.Delete("ToDoList/Users/" + username + "/TaskList");
+
         }
 
         public void DeleteAllUsers()
         {
             FirebaseResponse response = client.Delete("ToDoList/Users");
-            
-        }
 
-            }
+        }
+        public void DeleteUser(string username)
+        {
+            FirebaseResponse response = client.Delete("ToDoList/Users"+username);
+
+        }
         public bool LoginUser(User u) {
             u.LoggedIn = true;
-            FirebaseResponse response = client.Update("ToDoList/Users/" + u.ID, u);
-            User uUpdated= response.ResultAs<User>();
+            FirebaseResponse response = client.Update("ToDoList/Users/" + u.Username, u);
+            User uUpdated = response.ResultAs<User>();
             if (uUpdated.LoggedIn == true) {
                 return true;
             }
@@ -153,7 +121,7 @@ namespace to_do_list_wpf.Model
         public bool LogoutUser(User u)
         {
             u.LoggedIn = false;
-            FirebaseResponse response = client.Update("ToDoList/Users/" + u.ID, u);
+            FirebaseResponse response = client.Update("ToDoList/Users/" + u.Username, u);
             User uUpdated = response.ResultAs<User>();
             if (uUpdated.LoggedIn == false)
             {
@@ -163,9 +131,9 @@ namespace to_do_list_wpf.Model
         }
 
         //for checkItems...
-        public to_doTask.ChecklistItem AddCheckListItem(int userId, string title,to_do_list_wpf.Model.to_doTask.ChecklistItem c)
+        public to_doTask.ChecklistItem AddCheckListItem(int userId, string title, to_do_list_wpf.Model.to_doTask.ChecklistItem c)
         {
-            SetResponse response = client.Set("ToDoList/Users/" + userId + "/TaskList/" + title+"/ChecklistItem/"+c.Text, c);
+            SetResponse response = client.Set("ToDoList/Users/" + userId + "/TaskList/" + title + "/ChecklistItem/" + c.Text, c);
             return response.ResultAs<to_doTask.ChecklistItem>();
         }
         public List<to_doTask.ChecklistItem> GetCheckListItems(int userId, string title)
@@ -175,10 +143,10 @@ namespace to_do_list_wpf.Model
         }
         public void DeleteCheckListItem(string username, string title, string text)
         {
-            FirebaseResponse response = client.Delete("ToDoList/Users/" + username + "/TaskList/" + title + "/ChecklistItem/"+text);
-            
+            FirebaseResponse response = client.Delete("ToDoList/Users/" + username + "/TaskList/" + title + "/ChecklistItem/" + text);
 
-    }
-    }
+
+        }
+    } }
 
 

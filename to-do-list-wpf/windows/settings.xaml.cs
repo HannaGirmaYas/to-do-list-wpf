@@ -20,14 +20,23 @@ namespace to_do_list_wpf.windows
     /// </summary>
     public partial class settings : Window
     {
+        FBToDo fb = new FBToDo();
         public settings() {
             InitializeComponent();
         }
-        public settings(User u)
+        public settings(string usernameL)
         {
+
+            User u = fb.GetUser(usernameL);
+            if (u == null) { throw new Exception("User Null"); }
             if (u.LoggedIn == true) {
                 login.Visibility = Visibility.Collapsed;
                 signUp.Visibility = Visibility.Collapsed;
+                signin.Visibility = Visibility.Collapsed;
+                username.Text = u.Username;
+                email.Text = u.Email;
+                username.Visibility = Visibility.Visible;
+                email.Visibility = Visibility.Visible;
                 sync.Visibility = Visibility.Visible;
                 signOut.Visibility = Visibility.Visible;
                 

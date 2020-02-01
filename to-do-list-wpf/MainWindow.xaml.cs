@@ -26,7 +26,7 @@ namespace to_do_list_wpf
 		public MainWindow() {
 			InitializeComponent();
 			to_do_list_wpf.Model.to_doTask t = new to_do_list_wpf.Model.to_doTask("DOMINATE");
-			t.Items.Add(new to_doTask.ChecklistItem("Get a pet"));
+			/*t.Items.Add(new to_doTask.ChecklistItem("Get a pet"));
 			t.Items.Add(new to_doTask.ChecklistItem("Get a bombshell"));
 			t.Items.Add(new to_doTask.ChecklistItem("Get a black leather jacket"));
 			t.Items.Add(new to_doTask.ChecklistItem("Get a Harley"));
@@ -35,7 +35,7 @@ namespace to_do_list_wpf
 			t.Items.Add(new to_doTask.ChecklistItem("Get a haircut"));
 			TaskViewWindow.OpenATaskViewWindow(t);
 			TaskViewWindow.OpenATaskViewWindow(t);
-			TaskViewWindow.OpenATaskViewWindow(t);
+			TaskViewWindow.OpenATaskViewWindow(t);*/
 		}
 	}
 	

@@ -20,14 +20,18 @@ namespace to_do_list_wpf.windows
 	/// </summary>
 	public partial class TaskViewWindow : Window
 	{
-		public static TaskViewWindow OpenATaskViewWindow(to_doTask task) {
-			var window = new TaskViewWindow();
+        string username;
+        FBToDo fb = new FBToDo();
+        public static TaskViewWindow OpenATaskViewWindow(string usern,to_doTask task) {
+           
+			var window = new TaskViewWindow(usern,task);
 			window.task = task;
 			window.DataContext = window.task;
 			window.Show();
 			return window;
 		}
-		public TaskViewWindow() {
+		public TaskViewWindow(string username, to_doTask task) {
+            this.username = username;
 			InitializeComponent();
 			this.MouseDown += (sender, e) => {
 				if (e.LeftButton == MouseButtonState.Pressed) {
@@ -39,12 +43,30 @@ namespace to_do_list_wpf.windows
 		private to_doTask task;
 
 		private void AddItem(object sender, RoutedEventArgs e) {
-			this.task.AddNewItem();
+
+            string text="";// = textOfItem.Text;//the text next to checkbox
+            if (text.Length == 0)
+            {
+                MessageBox.Show("please enter text");
+                return;
+            }
+            to_doTask.ChecklistItem c = new to_doTask.ChecklistItem(text);
+            fb.AddCheckListItem(username, task.Title, c);
+			//this.task.AddNewItem();
 		}
 
 		private void RemoveItem(object sender, RoutedEventArgs e) {
-			this.task.Items.Remove((sender as Button).DataContext as to_doTask.ChecklistItem);
-		}
+            string text="";//=sender as the text or something
+            if (text.Length == 0)
+            {
+                MessageBox.Show("please enter text");
+                return;
+            }
+            
+            fb.DeleteCheckListItem(username, task.Title, text);
+
+            //this.task.items.Remove((sender as Button).DataContext as to_doTask.ChecklistItem);
+        }
 
 		private void CloseWindow(object sender, RoutedEventArgs e) {
 			this.Close();

@@ -65,7 +65,7 @@
 								<ColumnDefinition Width="auto" />
 							</Grid.ColumnDefinitions>
 							<CheckBox Grid.Column="0" IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" VerticalAlignment="Center"  BorderThickness="2"/>
-							<TextBox Grid.Column="1" Text="{Binding Path=Text, Mode=TwoWay}" 
+							<TextBox x:Name="textOfItem" Grid.Column="1" Text="{Binding Path=Text, Mode=TwoWay}" 
 									  VerticalAlignment="Center" Margin="5,0"  >
 							</TextBox>
 							<Button Grid.Column="2" Width="20" Height="20"  Click="RemoveItem" BorderThickness="0" >

@@ -19,26 +19,28 @@ namespace to_do_list_wpf.windows
     /// </summary>
     public partial class HomeWindow : Window
     {
-        public HomeWindow()
+        string username;
+        public HomeWindow(string username)
         {
             
             InitializeComponent();
-
+            this.username = username;
 			this.MouseDown += (sender, e) => {
 				if (e.LeftButton == MouseButtonState.Pressed) {
 					this.DragMove();
 				}
 			};
 
-			MainPage1 p = new MainPage1();
+			MainPage1 p = new MainPage1(username);
             mainFrame.Navigate(p);
 
         }
 
         private void addTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            //myWindow w = new myWindow();
-            //w.Show();
+
+            TaskViewWindow w = new TaskViewWindow(username,new Model.to_doTask());
+            w.Show();
             //call window
         }
 

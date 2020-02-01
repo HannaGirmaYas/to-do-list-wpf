@@ -22,8 +22,9 @@ namespace to_do_list_wpf.windows
 	public partial class MainPage1 : Page
 	{
 		public ObservableCollection<to_doTask> TaskList { get; set; }
-
-		public MainPage1() {
+        FBToDo fb = new FBToDo();
+        string username;
+        public MainPage1(string username) {
 			TaskList = new ObservableCollection<to_doTask>();
 			TaskList.Add(new to_doTask("task1"));
 			TaskList.Add(new to_doTask("task2"));
@@ -34,22 +35,36 @@ namespace to_do_list_wpf.windows
 			// replace the binding by user or something
 			this.DataContext = this;
 			InitializeComponent();
+            this.username = username;
 		}
 
 		private void searchButton_Click(object sender, RoutedEventArgs e) {
-            //
-		}
+            string title = searchedElement.Text;
+            if (title == "")
+            {
+                MessageBox.Show("Please enter Title of the task");
+                return;
+            }
+            to_doTask t= fb.GetTask(username, title);
+
+            //how to display t
+        }
 
 		private void deleteTaskButton_Click(object sender, RoutedEventArgs e) {
-			var task = (sender as FrameworkElement).DataContext as to_doTask;
-			foreach (var window in openWindows.ToList()) {
-				if (window.ContainedTaskEquals(task)) {
-					window.Close();
-					RemoveWindow(window);
-				}
-			}
-			// replace this logic to what points to the users.
-			TaskList.Remove(task);
+            //var task = (sender as FrameworkElement).DataContext as to_doTask;
+            //foreach (var window in openWindows.ToList()) {
+            //	if (window.ContainedTaskEquals(task)) {
+            //		window.Close();
+            //		RemoveWindow(window);
+            //	}
+            //}
+            // replace this logic to what points to the users.
+
+            //TaskList.Remove(task);
+
+            //uncomment this
+            //fb.DeleteTask(username,sender);
+            //how to display list
 		}
 		List<TaskViewWindow> openWindows = new List<TaskViewWindow>();
 
@@ -62,8 +77,13 @@ namespace to_do_list_wpf.windows
 					return;
 				}
 			}
-			openWindows.Add(TaskViewWindow.OpenATaskViewWindow(task));
-		}
+			//openWindows.Add(TaskViewWindow.OpenATaskViewWindow(task));
+
+            //i was thinking we do this instead
+            //var task = (sender as FrameworkElement).DataContext as to_doTask;
+            //TaskViewWindow  w = new TaskViewWindow(username,task);
+            //w.Show();
+        }
 		private void RemoveWindow(TaskViewWindow window) {
 			lock (openWindows) {
 				openWindows.Remove(window);
